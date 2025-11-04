@@ -26,7 +26,14 @@ public class Article { //클래스를 기반으로  DB테이블을 생성해준�
     private String content;
 
 
+    public void patch(Article article) {
+        if(article.title!=null){
+            this.title = article.title;
+        }
 
-
+        if(article.content!=null){
+            this.content = article.content;
+        }
+    }
 
 }

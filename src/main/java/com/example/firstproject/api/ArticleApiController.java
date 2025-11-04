@@ -60,6 +60,18 @@ public class ArticleApiController {
 
 
 //    delete
+    @DeleteMapping("/api/articles/{id}")
+    public ResponseEntity<Article> delete(@PathVariable Long id){
+//        1.대상 찾기
+        Article target = articleRepositry.findById(id).orElse(null);
 
+        if(target ==null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+        articleRepositry.delete(target);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+
+
+    }
 }
 
