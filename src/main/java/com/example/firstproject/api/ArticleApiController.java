@@ -53,7 +53,7 @@ public class ArticleApiController {
         }
 //        4.업데이트 및 정상 확인'
         target.patch(article);
-        Article updated = articleRepositry.save(article);
+        Article updated = articleRepositry.save(target);
         return ResponseEntity.status(HttpStatus.OK).body(updated);
     }
 
