@@ -48,13 +48,12 @@ public class CoffeeController {
 
     //patch
     @PatchMapping("/api/coffees/{id}")
-    public ResponseEntity<Coffee> patch(@PathVariable Long id, @RequestBody CoffeeDto dto){
+    public ResponseEntity<Coffee> update(@PathVariable Long id, @RequestBody CoffeeDto dto){
 
         Coffee coffee = dto.toEntity();
         log.info("id: {} Coffee: {}",id,coffee.toString());
 
         Coffee target = coffeeRepository.findById(id).orElse(null);
-//ddd
 
         if(target == null || id != coffee.getId()){
 
