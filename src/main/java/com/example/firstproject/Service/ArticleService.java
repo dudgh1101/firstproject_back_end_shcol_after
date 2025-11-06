@@ -2,23 +2,20 @@ package com.example.firstproject.Service;
 
 import com.example.firstproject.dto.ArticleForm;
 import com.example.firstproject.entity.Article;
-import com.example.firstproject.repository.ArticleRepositry;
+import com.example.firstproject.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 
 @Slf4j
 @Service // 서비스 객체 생성 (서비스객체를 스프링부트 내무에 생성)
 public class ArticleService {
     @Autowired
-    private ArticleRepositry articleRepositry;
+    private ArticleRepository articleRepositry;
 
     public List<Article> findAll() {
         return articleRepositry.findAll();

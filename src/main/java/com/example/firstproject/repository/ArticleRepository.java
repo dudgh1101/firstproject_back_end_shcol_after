@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;
 
-public interface ArticleRepositry extends CrudRepository<Article,Long> {
+public interface ArticleRepository extends CrudRepository<Article,Long> {
 
     @Override
     ArrayList<Article> findAll();
