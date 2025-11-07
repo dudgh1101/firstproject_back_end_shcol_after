@@ -64,7 +64,7 @@ public class ArticleService {
 
     @Transactional
 
-    public List<Article> creageArticles(List<ArticleForm> dtos) {
+    public List<Article> createArticles(List<ArticleForm> dtos) {
         //dto 묶음을 엔티티 묶음으로 변화
 //        List<Article> articleList = dtos.stream().map(dto -> dto.toEntity()).collect(Collector.toList<>);
         List<Article> articleList = new ArrayList<>();

@@ -62,7 +62,7 @@ public class ArticleApiController {
 //    실패했을떄 다시 롤벡
     @PostMapping("/api/transaction-test")
     public ResponseEntity<List<Article>> transactionTest(@RequestBody List<ArticleForm> dtos){
-        List<Article> createdList = articleService.creageArticles(dtos);
+        List<Article> createdList = articleService.createArticles(dtos);
         return (createdList != null) ? ResponseEntity.status(HttpStatus.CREATED).body(createdList) : ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 }
