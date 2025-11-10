@@ -23,7 +23,7 @@ public class ArticleApiController {
 
     @GetMapping("/api/articles")
     public List<Article> show(){
-        return articleService.findAll();
+        return articleService.index();
     }
     @GetMapping("/api/articles/{id}")
     public Article index(@PathVariable Long id){
