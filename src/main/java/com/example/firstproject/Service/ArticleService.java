@@ -28,9 +28,9 @@ public class ArticleService {
         Article entity = dto.toEntity();
 
         if(entity.getId() != null){
-            return articleRepositry.save(entity);
+            return null;
         }
-        return null;
+        return articleRepositry.save(entity);
     }
     public Article update(Long id,ArticleForm dto){
         //        1.수정용 엔티티 생성
