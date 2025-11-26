@@ -1,6 +1,8 @@
 package com.example.firstproject.controller;
 
+import com.example.firstproject.Service.CommentService;
 import com.example.firstproject.dto.ArticleForm;
+import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.repository.ArticleRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,8 @@ public class ArticleController {
 
     @Autowired
     private ArticleRepository articleRepository;
+    @Autowired
+    private CommentService commentService;
 
 
     @GetMapping("/articles/new")
@@ -45,11 +49,14 @@ public class ArticleController {
 
     @GetMapping("/articles/{id}")
     public String Show(@PathVariable Long id, Model model){
+        log.info("id ="+ id);
         //1.id 를 통해 데이터 가져오기
 //        Optional<Article> articleEntity = articleRepository.findById(id);
         Article articleEntity = articleRepository.findById(id).orElse(null);
+        List<CommentDto> commentDtos = commentService.comments(id);
 //        log.info(articleEntity.getId(id).orE);
         //2. 가져온 데이터를 nvc 중 에 Model에 등록
+        model.addAttribute("commentDtos",commentDtos);
     model.addAttribute("article",articleEntity);
 
         //3. 보여줄 페이지를 설정(view)

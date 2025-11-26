@@ -19,7 +19,7 @@ public class CommentApiController {
     private CommentService commentService;
     
     //댓글 목록 조회
-    @GetMapping("/api/article/{articleId}/comments")
+    @GetMapping("/api/{articleId}/comments")
     public ResponseEntity<List<CommentDto>> comments(@PathVariable Long articleId){
         //서비스에게 요청
         List<CommentDto> dtos =  commentService.comments(articleId);
@@ -28,7 +28,7 @@ public class CommentApiController {
     }
     
     //댓글 생성
-    @PostMapping("/api/article/{articleId}/comments")
+    @PostMapping("/api/{articleId}/comments")
     public ResponseEntity<CommentDto> name(@PathVariable Long articleId, @RequestBody CommentDto dto){
         //서비스에게 위임
         CommentDto createdDto = commentService.create(articleId,dto);
@@ -39,7 +39,25 @@ public class CommentApiController {
 
     
     //댓글 수정
+    @PatchMapping("/api/comments/{id}")
+    public ResponseEntity<CommentDto> update(@PathVariable Long id, @RequestBody CommentDto dto){
+        //서비스에게 위임
+        CommentDto updatedDto =commentService.update(id,dto);
+
+
+        //결과 응답
+        return ResponseEntity.status(HttpStatus.OK).body(updatedDto);
+    }
     
     //댓글 삭제
+
+    @DeleteMapping("/api/comments/{id}")
+    public ResponseEntity<CommentDto> delete(@PathVariable Long id){
+        //서비스에게 위임
+        CommentDto deletedDto = commentService.delete(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body(deletedDto);
+
+    }
 
 }
